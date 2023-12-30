@@ -1,0 +1,21 @@
+name: Build DEB Package
+
+on:
+  push:
+    branches:
+        -main
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: actions/setup-docker@v2
+
+      - name: Build DEB Package
+        run: dpkg-deb --build dev/proj1
